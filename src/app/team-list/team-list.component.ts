@@ -77,7 +77,7 @@ export class TeamListComponent implements OnInit {
     this.scheduleMatch = false;
   },
   error => {
-      if(error['status'] == 400){
+      if(error['status'] == 409){
         alert("Match already scheduled between these teams on "+this.date.nativeElement.value.trim());
       }
   })
