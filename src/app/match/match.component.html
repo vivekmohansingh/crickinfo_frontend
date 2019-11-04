@@ -1,0 +1,39 @@
+<div class = "row">
+  <div class = "col-xs-12">
+      <div class = "row">
+          <div class="col-xs-12" style = "text-align: center">
+            <h1 *ngIf="is_fixture == 0">Match Summary </h1>
+            <h1 *ngIf="is_fixture == 1">Match Schedule</h1>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" >
+          <span class="list-group-item clearfix" *ngFor = "let match of matches">
+                          <span class= "col-xs-2">
+                 <b>{{match.team1_name}}</b>
+              </span>
+              <span class = "col-xs-2">
+                  <b class="">{{match.team2_name}}</b>
+              </span>
+               <span class = "col-xs-2">
+                  <b class="">{{match.schedule_time}}</b>
+              </span>
+              <span class = "col-xs-2" *ngIf = "match.result == 1">
+                  <b class="">{{match.team1_name}} Won</b>
+              </span>
+              <span class = "col-xs-2" *ngIf = "match.result == 2">
+                  <b class="">{{match.team2_name}} Won</b>
+              </span>
+               <span class = "col-xs-2" *ngIf = "match.result == 0 && is_fixture == 0">
+                  <b class="">NA</b>
+              </span>
+               <span class = "col-xs-2" *ngIf="is_fixture == 0">
+                  <b class="">{{match.team1_point}} ({{match.team1_name}})</b>
+              </span>
+              <span class = "col-xs-2" *ngIf="is_fixture == 0">
+                  <b class="">{{match.team2_point}} ({{match.team2_name}})</b>
+              </span>
+
+          </span>
+             </div>
+        </div>

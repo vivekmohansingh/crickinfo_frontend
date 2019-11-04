@@ -1,0 +1,60 @@
+<div class = "row">
+  <div class = "col-xs-12">
+      <div class = "row">
+          <div class="col-xs-12" style = "text-align: center">
+            <h1 *ngIf = "!scheduleMatch">IPL Cricket Teams </h1>
+            <h1 *ngIf = "scheduleMatch">Schedule Match</h1>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" *ngIf = "!scheduleMatch" >
+          <a (click) = "onClick(team.teamId,'/players',0)" routerLinkActive = "active" style="cursor: pointer;" class="list-group-item clearfix" *ngFor = "let team of teams;let i = index" >
+                          <span class= "col-xs-4">
+                 <img [src] = "team.teamLogo" class="img-responsive" style="max-height:50px;"/><b>{{team.club}}</b>
+              </span>
+              <div class = "pull-right">
+                  <h2 class="">{{team.teamName}}</h2>
+              </div>
+              <div class = "col-xs-2">
+                <a href="javascript:void(0)" (click) = "onClick(team.teamId,'/matches',0)"><b>Match Summary</b></a>
+                  </div>
+                  <div class = "">
+                <a href="javascript:void(0)" (click) = "onClick(team.teamId,'/matches',1)"><b>Match Schedule</b></a>
+             </div>
+
+          </a>
+        </div>
+        <div class="col-xs-12" *ngIf = "scheduleMatch">
+           <div *ngIf="scheduleMatch">
+              <div class = "col-xs-4">
+                <label for = "team1">Team 1 ID</label>
+                <input name = "team1" type = "text" style = "margin-left: 10px;" #team1>
+              </div>
+              <div class = "col-xs-4">
+                <label for = "team2">Team 2 ID</label>
+                <input name = "team2" type = "text" style = "margin-left: 10px;" #team2>
+              </div>
+              <div class = "col-xs-4">
+                <label for = "date">Match Schedule Date</label>
+                <input name = "date" type = "date" style = "margin-left: 10px;" #date>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class = "row" *ngIf = "!scheduleMatch">
+        <div class = "col-xs-12" style="text-align: center;">
+          <button class = "btn btn-primary" style = "margin-top: 10px;" 
+          (click)="scheduledMatch()">Schedule Match</button>
+        </div>
+      </div>
+      <div class = "row" *ngIf = "scheduleMatch">
+        <div class = "col-xs-12" style="text-align: center;">
+          <button class = "btn btn-primary" style = "margin-top: 10px;" 
+          (click)="schedule()">Schedule</button>
+        </div>
+      </div>   
+  </div>
+<!--   <div class = "col-xs-6">
+    <app-schedule-match></app-schedule-match>
+  </div> -->
+</div>

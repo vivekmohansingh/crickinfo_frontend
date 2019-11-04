@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+.bg-image{
+         height:40em; 
+         background-size:cover;
+         width:auto;
+         background-image:url('/assets/images/cricket-pitch-preparation-25144005.jpg');
+         background-position:50% 50%;
+       }

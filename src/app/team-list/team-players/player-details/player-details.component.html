@@ -1,0 +1,38 @@
+<a   (click) = "onClick(player.playerId)" routerLinkActive = "active"
+style="cursor: pointer;" class="list-group-item clearfix"
+*ngFor = "let player_detail of playerDetail" >
+
+<div class="row">
+</div>
+  <div class="row">
+      <div class="col-xs-12">
+        <h3 class="list-group-item clearfix">Player Name : {{player_detail.firstName}} {{player_detail.secondName}}</h3>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+          <h3 class="list-group-item clearfix">Total Matches : {{player_detail.total_match}}</h3>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-xs-12">
+            <h3 class="list-group-item clearfix">Total Runs : {{player_detail.total_run}}</h3>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+             <h3 class="list-group-item clearfix">Total Fifties : {{player_detail.total_fifty}}</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+             <h3 class="list-group-item clearfix">Total Centuries : {{player_detail.total_hundrad}}</h3>
+            </div>
+          </div>
+         <div class="row">
+            <div class="col-xs-12">
+             <h3 class="list-group-item clearfix">Highest Score : {{player_detail.hscore}}</h3>
+            </div>
+          </div>
+
+</a>

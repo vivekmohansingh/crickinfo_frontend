@@ -1,0 +1,29 @@
+<div class = "row">
+  <div class = "col-xs-6">
+      <div class = "row">
+          <div class="col-xs-12" style = "text-align: center">
+            <h2>Team {{team_name}}</h2>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <a   (click) = "onClick(player.playerId)" routerLinkActive = "active" style="cursor: pointer;" class="list-group-item clearfix" *ngFor = "let player of players" >
+                          <span class = " col-xs-4 pull-left">
+                 <img [src] = "player.imageURL" class="img-responsive" style="max-height:50px;"/><b>{{player.country}}</b>
+              </span>
+              <div class="col-xs-4 col-md-2 col-md-2">
+                  <h3 class="">{{player.firstName}} {{player.secondName}}</h3>
+
+              </div>
+              <span class = "col-xs-4 col-md-2 col-md-push-3">
+                 <h3 class="">{{player.jersey_number}}</h3>
+              </span>
+
+          </a>
+        </div>
+      </div>
+  </div>
+  <div class = "col-xs-6">
+    <app-player-details></app-player-details>
+  </div>
+</div>
