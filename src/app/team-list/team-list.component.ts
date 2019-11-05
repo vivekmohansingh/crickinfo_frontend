@@ -78,7 +78,9 @@ export class TeamListComponent implements OnInit {
   },
   error => {
      switch(error['status']){
-       case 400 : alert("Team 1 and Team 2 cannot be same . Please select different teams");
+       case 406 : alert("Team 1 and Team 2 cannot be same . Please select different teams");
+                  break;
+       case 400 : alert("Invalid Data");
                   break;
        case 404 : alert("Invalid Teams");
                   break;
