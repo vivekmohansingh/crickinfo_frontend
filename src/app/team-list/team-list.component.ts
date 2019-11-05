@@ -71,18 +71,20 @@ export class TeamListComponent implements OnInit {
     result : 0,
     schedule_time : this.date.nativeElement.value.trim()
   }
-
+  
   this._http.post('http://localhost:4200/api/match',payload,httpOptions).subscribe(response => {
     alert("Match Scheduled Successfully");
     this.scheduleMatch = false;
   },
   error => {
-      if(error['status'] == 409){
-        alert("Match already scheduled between these teams on "+this.date.nativeElement.value.trim());
-      }
-      else if(error['status'] == 400){
-        alert("Team 1 and Team 2 cannot be same . Please select different teams");
-      }
+     switch(error['status']){
+       case 400 : alert("Team 1 and Team 2 cannot be same . Please select different teams");
+                  break;
+       case 404 : alert("Invalid Teams");
+                  break;
+       case 409 : alert("Match already scheduled between these teams on "+this.date.nativeElement.value.trim());
+                  break;
+     }
   })
  }
  selectTeamOne(event){
