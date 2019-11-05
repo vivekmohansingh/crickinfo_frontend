@@ -27,12 +27,16 @@
         <div class="col-xs-12" *ngIf = "scheduleMatch">
            <div *ngIf="scheduleMatch">
               <div class = "col-xs-4">
-                <label for = "team1">Team 1 ID</label>
-                <input name = "team1" type = "text" style = "margin-left: 10px;" #team1>
+                <label for = "team1">Select Team 1</label>
+                <select name = "team1" style = "margin-left: 10px;" (change)="selectTeamOne($event)">
+                  <option *ngFor = "let team of teams;let i = index;" [value] = "team.teamId" [selected] = "i == 0">{{team.teamName}}</option>
+                </select>
               </div>
               <div class = "col-xs-4">
-                <label for = "team2">Team 2 ID</label>
-                <input name = "team2" type = "text" style = "margin-left: 10px;" #team2>
+                <label for = "team2">Select Team 2</label>
+                <select name = "team2" style = "margin-left: 10px;" (change)="selectTeamTwo($event)">
+                  <option *ngFor = "let team of teams;let i = index;" [value] = "team.teamId" [selected] = "i == 1">{{team.teamName}}</option>
+                </select>
               </div>
               <div class = "col-xs-4">
                 <label for = "date">Match Schedule Date</label>

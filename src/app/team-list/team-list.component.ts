@@ -17,8 +17,8 @@ export class TeamListComponent implements OnInit {
   teams : Team[] = [];
   arr;
   scheduleMatch = false;
-  @ViewChild('team1') team1 : ElementRef;
-  @ViewChild('team2') team2 : ElementRef;
+  team1 = '1';
+  team2 = '2';
   @ViewChild('date') date : ElementRef;
   constructor(private _http : HttpClient , private teamService : TeamServiceService , private router : Router) { }
 
@@ -66,12 +66,12 @@ export class TeamListComponent implements OnInit {
     })
   };
   let payload = {
-    team1_id : this.team1.nativeElement.value.trim(),
-    team2_id : this.team2.nativeElement.value.trim(),
+    team1_id : this.team1.trim(),
+    team2_id : this.team2.trim(),
     result : 0,
     schedule_time : this.date.nativeElement.value.trim()
   }
-  
+
   this._http.post('http://localhost:4200/api/match',payload,httpOptions).subscribe(response => {
     alert("Match Scheduled Successfully");
     this.scheduleMatch = false;
@@ -80,6 +80,15 @@ export class TeamListComponent implements OnInit {
       if(error['status'] == 409){
         alert("Match already scheduled between these teams on "+this.date.nativeElement.value.trim());
       }
+      else if(error['status'] == 400){
+        alert("Team 1 and Team 2 cannot be same . Please select different teams");
+      }
   })
+ }
+ selectTeamOne(event){
+   this.team1 = event.target.value;
+ }
+ selectTeamTwo(event){
+   this.team2 = event.target.value;
  }
 }
